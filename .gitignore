@@ -25,3 +25,9 @@ buildNumber.properties
 .gitignore
 .idea/
 JavaForTesters.iml
+
+# eclipse
+.settings/
+.project
+.classpath
+.checkstyle
