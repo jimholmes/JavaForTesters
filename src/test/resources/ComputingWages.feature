@@ -26,12 +26,12 @@ Feature: Compute standard and overtime wages for hourly (not salary) workers
   Scenario: Can't work > 80 hours,
     Given hourly rate is 10
     When 81 hours are worked
-    Then an error should happen
+    Then an Over Max Hours error should happen
     
   Scenario: Can't have rate > $500
   	Given hourly rate is 501
   	When 40 hours are worked
-  	Then an error should happen
+  	Then an Over Max Rate error should happen
   	
   Scenario: Can't work negative hours
   	Given hourly rate is 10

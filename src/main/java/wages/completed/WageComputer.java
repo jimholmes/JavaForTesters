@@ -1,19 +1,22 @@
 package wages.completed;
 
+import wages.MaxHoursExceededException;
+import wages.MaxRateExceededException;
+
 public class WageComputer {
 
-	public float computeWages(float hours, float rate) {
+	public float computeWages(float hours, float rate) throws MaxRateExceededException, MaxHoursExceededException {
 		if (hours < 0) {
 			throw new IllegalArgumentException("Hours must be greater than zero. Was: "+hours);
 		}
 		if (hours > 80) {
-			throw new IllegalArgumentException("Hours must be less than or equal to 80. Was: "+hours);
+			throw new MaxHoursExceededException("Hours must be less than or equal to 80. Was: "+hours);
 		}
 		if (rate < 0) {
 			throw new IllegalArgumentException("Rate must be greater than zero. Was: " + rate);
 		}
 		if (rate > 500) {
-			throw new IllegalArgumentException("Rate cannot be more than 500. Was: "+ rate);
+			throw new MaxRateExceededException("Rate cannot be more than 500. Was: "+ rate);
 		}
 		float wages = 0;
 		if (hours <= 40) {
