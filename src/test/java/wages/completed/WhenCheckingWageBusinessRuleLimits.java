@@ -5,6 +5,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import wages.MaxHoursExceededException;
+import wages.MaxRateExceededException;
+
 public class WhenCheckingWageBusinessRuleLimits extends WageComputerInitializer {
 	
 	float hours;
@@ -14,7 +17,7 @@ public class WhenCheckingWageBusinessRuleLimits extends WageComputerInitializer 
 	
 	@Test
 	public void HoursOver80ThrowsException() throws Exception {
-		thrown.expect(IllegalArgumentException.class);
+		thrown.expect(MaxHoursExceededException.class);
 		hours = 81;
 		
 		computer.computeWages(hours, RATE);
@@ -22,7 +25,7 @@ public class WhenCheckingWageBusinessRuleLimits extends WageComputerInitializer 
 	
 	@Test
 	public void RateOver500ThrowsException() throws Exception {
-		thrown.expect(IllegalArgumentException.class);
+		thrown.expect(MaxRateExceededException.class);
 		hours = 40;
 		float rate = 501;
 		
